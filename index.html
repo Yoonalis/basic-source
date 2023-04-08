@@ -1,0 +1,39 @@
+<!--
+ * @Author: azureabaaba
+ * @Date: 2023-04-07 17:31:03
+ * @Description: test
+ * @FilePath: \index.html
+-->
+
+
+<div>
+    <button onclick=debounce(test,1000,false)(1)>
+        debounce
+    </button>
+</div>
+
+<script>
+    function test(a) {
+        console.log(a++)
+    }
+    function debounce(func, wait, immediate) {
+        console.log('start')
+        let timer = null;
+        return function() {
+            const context = this;
+            const args = arguments;
+            timer && clearTimeout(timer);
+            if (immediate) {
+                const callNow = !timer;
+                timer = setTimeout(() => {
+                    timer = null;
+                }, wait);
+                if (callNow) func.apply(context, args);
+            } else {
+                timer = setTimeout(() => {
+                    func.apply(context, args);
+                }, wait)
+            }
+        }
+    }
+</script>
