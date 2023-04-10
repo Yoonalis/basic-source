@@ -10,7 +10,7 @@
 function debounce1(func, wait) {
     let timer = null;
     return function () {
-        const args = arguments;
+        const args = [...arguments];
         const context = this;
         timer && clearTimeout(timer);
         timer = setTimeout(() => {

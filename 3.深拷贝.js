@@ -5,6 +5,7 @@
  * @FilePath: \3.深拷贝.js
  */
 
+var { cloneDeep } = require('lodash');
 
 /**
  * @description: 递归实现
@@ -71,3 +72,13 @@ function deepCopy(obj, parent = null) {
     }
     return result;
 }
+
+
+// 完美的深拷贝
+var obj1 = {
+    a: 1,
+    b: { f: { g: 1 } },
+    c: [1, 2, 3]
+};
+var obj2 = cloneDeep(obj1);
+console.log(obj1.b.f === obj2.b.f);
